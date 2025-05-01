@@ -29,10 +29,8 @@ const CameraScreen: React.FC = () => {
         console.log('Image URI:', photo?.uri);
 
         await detectImage(photo?.uri); 
-        Alert.alert('Thành công', 'Đã chụp và gửi ảnh để detect!');
       } catch (error) {
         console.error('Lỗi khi chụp ảnh:', error);
-        Alert.alert('Lỗi', 'Không thể chụp ảnh, thử lại sau!');
       }
     }
   };
@@ -50,7 +48,7 @@ const CameraScreen: React.FC = () => {
       <CameraView
         ref={cameraRef}
         style={styles.camera}
-        facing='back'
+        facing={cameraType}
         onCameraReady={() => setIsCameraReady(true)}
       ></CameraView>
       <View style={styles.buttonContainer}>
